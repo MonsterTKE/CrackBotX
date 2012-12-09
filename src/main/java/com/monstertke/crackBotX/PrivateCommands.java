@@ -29,12 +29,15 @@ public class PrivateCommands extends ListenerAdapter
 					event.respond("Hey-O!");
 					break;
 				case "!help" :
-					event.respond("Commands are, !activate, !shutdown and !help");
+					event.respond("Commands are, !activate, !shutdown, !gc and !help");
 					break;
 				case "!shutdown" :
 					event.respond("Goodbye!");
 					event.getBot().shutdown();
 					System.exit(1);
+					break;
+				case "!cg" :
+					System.gc();
 					break;
 				default :
 					event.respond("That wasnt a valid command, !help for help");
