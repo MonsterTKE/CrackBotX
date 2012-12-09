@@ -9,11 +9,13 @@ public class PrivateCommands extends ListenerAdapter
 {
 	PircBotX bot = null;
 	ConfigManager conf = null;
+	LoggerFactory log = null;
 
-	public PrivateCommands(PircBotX botInstance, ConfigManager configuration)
+	public PrivateCommands(PircBotX botInstance, ConfigManager configuration, LoggerFactory logger)
 	{
 		bot = botInstance;
 		conf = configuration;
+		log = logger;
 	}
 
 	public void onPrivateMessage(PrivateMessageEvent event) throws Exception
@@ -33,6 +35,7 @@ public class PrivateCommands extends ListenerAdapter
 					break;
 				case "!shutdown" :
 					event.respond("Goodbye!");
+					log.closeLog();
 					event.getBot().shutdown();
 					System.exit(1);
 					break;

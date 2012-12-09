@@ -8,10 +8,14 @@ import org.pircbotx.hooks.events.JoinEvent;
 public class OnJoinMessage extends ListenerAdapter
 {
 	PircBotX bot = null;
+	ConfigManager conf = null;
+	LoggerFactory log = null;
 
-	public OnJoinMessage(PircBotX botInstance)
+	public OnJoinMessage(PircBotX botInstance, ConfigManager configuration, LoggerFactory logger)
 	{
 		bot = botInstance;
+		conf = configuration;
+		log = logger;
 	}
 
 	public void onJoin(JoinEvent event)

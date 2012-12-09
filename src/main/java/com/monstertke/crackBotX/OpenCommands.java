@@ -11,19 +11,14 @@ import org.pircbotx.hooks.events.MessageEvent;
 public class OpenCommands extends ListenerAdapter
 {
 	PircBotX bot = null;
-	LoggerFactory log;
-	public OpenCommands(PircBotX botInstance)
+	ConfigManager conf = null;
+	LoggerFactory log = null;
+	
+	public OpenCommands(PircBotX botInstance, ConfigManager configuration, LoggerFactory logger)
 	{
 		bot = botInstance;
-		try
-		{
-			log = new LoggerFactory();
-		}
-		catch (FileNotFoundException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		conf = configuration;
+		log = logger;
 	}
 
 	public void onMessage(MessageEvent event) throws Exception

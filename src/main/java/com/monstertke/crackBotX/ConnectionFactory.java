@@ -1,5 +1,6 @@
 package com.monstertke.crackBotX;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.pircbotx.PircBotX;
@@ -11,10 +12,21 @@ public class ConnectionFactory
 {
 	private ConfigManager conf;
 	private static PircBotX bot;
+	private LoggerFactory logger;
 
 	public ConnectionFactory(ConfigManager configuration)
 	{
 		conf = configuration;
+		try
+		{
+			logger = new LoggerFactory();
+		}
+		catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void connectNow() throws Exception
@@ -23,9 +35,9 @@ public class ConnectionFactory
 		b.setVerbose(true);
 		b.setAutoNickChange(true);
 		b.useShutdownHook(true);
-		b.getListenerManager().addListener(new OpenCommands(bot));
-		b.getListenerManager().addListener(new PrivateCommands(bot, conf));
-		b.getListenerManager().addListener(new OnJoinMessage(bot));
+		b.getListenerManager().addListener(new OpenCommands(bot,conf,logger));
+		b.getListenerManager().addListener(new PrivateCommands(bot, conf,logger));
+		b.getListenerManager().addListener(new OnJoinMessage(bot,conf,logger));
 		b.setName(conf.getBotName());
 		try
 		{
