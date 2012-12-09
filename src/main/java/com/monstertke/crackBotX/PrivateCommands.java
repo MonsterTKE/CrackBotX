@@ -47,7 +47,7 @@ public class PrivateCommands extends ListenerAdapter
 		}
 		else
 		{
-			event.respond("You dont own Me!!");
+			event.respond("You dont own Me!!!");
 		}
 	}
 }
