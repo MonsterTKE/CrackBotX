@@ -1,21 +1,26 @@
 package com.monstertke.crackBotX;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
-import jline.console.*;
 public class LoggerFactory
 {
-	ConnectionFactory conn;
+	static PrintWriter file;
 	
-	public LoggerFactory(ConnectionFactory connection)
+	public LoggerFactory() throws FileNotFoundException
 	{
-		conn = connection;
+		file = new PrintWriter("CrackBotX/log.txt");
 		
 	}
 	
-	public void printObject() throws IOException
+	public void writeLog(String message)
 	{
-		System.out.println(conn.returnBot().toString());
-		ConsoleReader r = new ConsoleReader();
+		file.println(message);
+		file.flush();
+	}
+	
+	public void closeLog()
+	{
+		file.close();
 	}
 }

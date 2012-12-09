@@ -18,7 +18,7 @@ public class Main
 		
 		ConfigManager conf = new ConfigManager();
 		conf.writeFileDefault();
-
+		
 		ConnectionFactory conn = new ConnectionFactory(conf);
 
 		try
