@@ -41,12 +41,17 @@ public class OpenCommands extends ListenerAdapter
 				log.writeLog(user + " sent the \"time\" command on " + time);
 				break;
 			case "!help":
-				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !twitter");
+				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !password and !twitter");
 				log.writeLog(user + " sent the \"help\" command on " + time);
 				break;
 			case "!twitter":
 				event.getBot().sendNotice(event.getUser(), "somethin somethin");
 				log.writeLog(user + " sent the \"twitter\" command on " + time);
+				break;
+			case "!password":
+				PassGetter pass = new PassGetter();
+				event.getBot().sendNotice(event.getUser(), pass.getPassword());
+				log.writeLog(user + " sent the \"password\" command on " + time);
 				break;
 			default:
 				//ToDO
