@@ -23,57 +23,33 @@ public class OpenCommands extends ListenerAdapter
 
 	public void onMessage(MessageEvent event) throws Exception
 	{
-		if (event.getMessage().equalsIgnoreCase("!derp"))
+		String messageString = event.getMessage();
+		String user = event.getUser().getNick();
+		Date time = new Date();
+		switch(messageString.toLowerCase())
 		{
-
-			event.respond("says derp");
-			System.out.println(event.getUser().getNick()
-					+ " sent the \"derp\" command on " + new Date());
-			log.writeLog(event.getUser().getNick()
-					+ " sent the \"derp\" command on " + new Date());
-		}
-
-		if (event.getMessage().equalsIgnoreCase("!time"))
-		{
- 
-			Date time = new Date();
-
-			event.respond("Current time is: " + time);
-			System.out.println(event.getUser().getNick()
-					+ " sent the \"time\" command on " + time);
-			log.writeLog(event.getUser().getNick()
-					+ " sent the \"time\" command on " + new Date());
-		}
-		
-		if (event.getMessage().equalsIgnoreCase("!owner"))
-		{
-
-			Date time = new Date();
-
-			event.respond("The Owner of this bot is MonsterTKE");
-			System.out.println(event.getUser().getNick()
-					+ " sent the \"owner\" command on " + time);
-			log.writeLog(event.getUser().getNick()
-					+ " sent the \"time\" command on " + new Date());
-		}
-		
-		if (event.getMessage().equalsIgnoreCase("!help"))
-		{
-
-			Date time = new Date();
-			
-			event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !twitter");
-			
-			System.out.println(event.getUser().getNick()
-					+ " sent the \"help\" command on " + time);
-			log.writeLog(event.getUser().getNick()
-					+ " sent the \"help\" command on " + new Date());
-		}
-
-		if (event.getMessage().equalsIgnoreCase("!twitter"))
-		{
-
-			event.getBot().sendNotice(event.getUser(), "somethin somethin");
+			case "!derp":
+				event.respond("says derp");
+				log.writeLog(user + " sent the \"derp\" command on " + time);
+				break;
+			case "!time":
+				event.respond("Current bot server time is: " + time);
+				log.writeLog(user + " sent the \"time\" command on " + time);
+				break;
+			case "!owner":
+				event.respond("The Owner of this bot is MonsterTKE");
+				log.writeLog(user + " sent the \"time\" command on " + time);
+				break;
+			case "!help":
+				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !twitter");
+				log.writeLog(user + " sent the \"help\" command on " + new Date());
+				break;
+			case "!twitter":
+				event.getBot().sendNotice(event.getUser(), "somethin somethin");
+				break;
+			default:
+				//ToDO
+				break;
 		}
 	} 
 

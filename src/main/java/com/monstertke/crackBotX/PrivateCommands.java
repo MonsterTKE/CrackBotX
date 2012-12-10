@@ -7,11 +7,12 @@ import org.pircbotx.hooks.events.PrivateMessageEvent;
 @SuppressWarnings("rawtypes")
 public class PrivateCommands extends ListenerAdapter
 {
-	PircBotX bot = null;
-	ConfigManager conf = null;
-	LoggerFactory log = null;
+	PircBotX		bot		= null;
+	ConfigManager	conf	= null;
+	LoggerFactory	log		= null;
 
-	public PrivateCommands(PircBotX botInstance, ConfigManager configuration, LoggerFactory logger)
+	public PrivateCommands(PircBotX botInstance, ConfigManager configuration,
+			LoggerFactory logger)
 	{
 		bot = botInstance;
 		conf = configuration;
