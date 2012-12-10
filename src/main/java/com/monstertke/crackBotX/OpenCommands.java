@@ -33,19 +33,20 @@ public class OpenCommands extends ListenerAdapter
 				log.writeLog(user + " sent the \"derp\" command on " + time);
 				break;
 			case "!time":
-				event.respond("Current bot server time is: " + time);
+				event.getBot().sendNotice(event.getUser(), "Current bot server time is: " + time);
 				log.writeLog(user + " sent the \"time\" command on " + time);
 				break;
 			case "!owner":
-				event.respond("The Owner of this bot is MonsterTKE");
+				event.getBot().sendNotice(event.getUser(),"The Owner of this bot is MonsterTKE");
 				log.writeLog(user + " sent the \"time\" command on " + time);
 				break;
 			case "!help":
 				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !twitter");
-				log.writeLog(user + " sent the \"help\" command on " + new Date());
+				log.writeLog(user + " sent the \"help\" command on " + time);
 				break;
 			case "!twitter":
 				event.getBot().sendNotice(event.getUser(), "somethin somethin");
+				log.writeLog(user + " sent the \"twitter\" command on " + time);
 				break;
 			default:
 				//ToDO
