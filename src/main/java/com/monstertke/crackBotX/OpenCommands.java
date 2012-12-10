@@ -49,7 +49,7 @@ public class OpenCommands extends ListenerAdapter
 				log.writeLog(user + " sent the \"twitter\" command on " + time);
 				break;
 			case "!password":
-				PassGetter pass = new PassGetter();
+				UrlGetter pass = new UrlGetter();
 				event.getBot().sendNotice(event.getUser(), pass.getPassword());
 				log.writeLog(user + " sent the \"password\" command on " + time);
 				break;

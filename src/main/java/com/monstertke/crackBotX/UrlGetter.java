@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class PassGetter
+public class UrlGetter
 {
 
-	public PassGetter()
+	public UrlGetter()
 	{
 		// TODO Auto-generated constructor stub
 	}
