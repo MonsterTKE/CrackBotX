@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
+import org.pircbotx.hooks.ListenerAdapter;
 
 //Javadoc http://site.pircbotx.googlecode.com/hg-history/1.7/apidocs/org/pircbotx/PircBotX.html
 public class ConnectionFactory
@@ -36,6 +37,7 @@ public class ConnectionFactory
 		b.useShutdownHook(true);
 		b.getListenerManager().addListener(new OpenCommands(bot,conf,logger));
 		b.getListenerManager().addListener(new PrivateCommands(bot, conf,logger));
+		b.getListenerManager().addListener(new ArgumentCommands(bot,conf,logger));
 		b.getListenerManager().addListener(new OnJoinMessage(bot,conf,logger));
 		b.setName(conf.getBotName());
 		try

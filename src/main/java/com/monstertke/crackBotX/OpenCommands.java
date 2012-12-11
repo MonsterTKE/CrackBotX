@@ -39,10 +39,6 @@ public class OpenCommands extends ListenerAdapter
 				event.getBot().sendNotice(event.getUser(),"The Owner of this bot is MonsterTKE");
 				log.writeLog(user + " sent the \"time\" command on " + time);
 				break;
-			case "!help":
-				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !password and !twitter");
-				log.writeLog(user + " sent the \"help\" command on " + time);
-				break;
 			case "!twitter":
 				event.getBot().sendNotice(event.getUser(), "somethin somethin");
 				log.writeLog(user + " sent the \"twitter\" command on " + time);
