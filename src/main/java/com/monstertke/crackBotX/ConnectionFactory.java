@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
-import org.pircbotx.exception.NickAlreadyInUseException;
 
 //Javadoc http://site.pircbotx.googlecode.com/hg-history/1.7/apidocs/org/pircbotx/PircBotX.html
 public class ConnectionFactory
@@ -48,10 +47,12 @@ public class ConnectionFactory
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			logger.writeLog(e.toString());
 		}
 		catch (IrcException e)
 		{
 			this.ghostAuth(b);
+			logger.writeLog(e.toString());
 
 		}
 		

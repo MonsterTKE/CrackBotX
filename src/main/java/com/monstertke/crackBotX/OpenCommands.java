@@ -1,6 +1,5 @@
 package com.monstertke.crackBotX;
 
-import java.io.FileNotFoundException;
 import java.util.Date;
 
 import org.pircbotx.PircBotX;
@@ -57,6 +56,7 @@ public class OpenCommands extends ListenerAdapter
 				//ToDO
 				break;
 		}
+
 	} 
 
 }

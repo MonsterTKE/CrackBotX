@@ -27,10 +27,12 @@ public class Main
 		}
 		catch(Exception e)
 		{
+			LoggerFactory logger = new LoggerFactory();
 			out.println("");
 			out.println("Exception in \"Main\", it could be one of the following...");
 			out.println("Please edit your config file, or if this is the first time CrackBotX is being run,");
 			out.println("CrackBotX has just created the files it needs to run, please try again.");
+			logger.writeLog(e.toString());
 		}
 		
 	}
