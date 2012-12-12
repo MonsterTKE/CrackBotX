@@ -12,22 +12,38 @@ public class UrlGetter
 	{
 		// TODO Auto-generated constructor stub
 	}
-	public String getPassword() throws IOException
+	public String getPassword(String length) throws IOException
 	{
-		URL pw = new URL(
-				"https://www.random.org/passwords/?num=1&len=20&format=plain&rnd=new");
-		BufferedReader in = new BufferedReader(new InputStreamReader(pw
-				.openStream()));
-		String inputLine;
-		inputLine = in.readLine();
-		in.close();
-		if (inputLine != null)
+		int passwordLength = 0;
+		try
 		{
-			return inputLine + " <- Here is a 20 digit PW from random.org!";
+			passwordLength = Integer.parseInt(length);
+		}
+		catch(NumberFormatException e)
+		{
+			return "Sorry the password length must be a digit from 6 - 24";
+		}
+		if (passwordLength >= 6 && passwordLength <= 24)
+		{
+			URL pw = new URL(
+					"https://www.random.org/passwords/?num=1&len="+ passwordLength + "&format=plain&rnd=new");
+			BufferedReader in = new BufferedReader(new InputStreamReader(pw
+					.openStream()));
+			String inputLine;
+			inputLine = in.readLine();
+			in.close();
+			if (inputLine != null)
+			{
+				return inputLine + " <- Here is a " + passwordLength +" digit password from random.org!";
+			}
+			else
+			{
+				return "Sorry, something went wrong, please try again";
+			}
 		}
 		else
 		{
-			return "Sorry, something went wrong, please try again";
+			return "Range is 6 - 24";
 		}
 	}
 }

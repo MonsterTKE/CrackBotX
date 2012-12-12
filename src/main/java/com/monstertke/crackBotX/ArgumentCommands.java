@@ -29,53 +29,86 @@ public class ArgumentCommands extends ListenerAdapter
 		if (messageString.toLowerCase().startsWith("!help"))
 		{
 			String[] msg = messageString.split(" ");
-			
+
 			if (msg.length == 2)
 			{
 				switch (msg[1].toLowerCase())
 				{
 					case "password" :
 						event.getBot()
-								.sendNotice(user,
-										"The !password command calls the random.org api to provide a 20 digit password.");
-						log.writeLog(user + " sent the \"help password\" command on " + time);
+								.sendNotice(
+										user,
+										"The !password command calls the random.org api to provide a \"N\" digit password.");
+						event.getBot()
+								.sendNotice(
+										user,
+										"The Usage is !password (number) from 6 - 24");
+						log.writeLog(user
+								+ " sent the \"help password\" command on "
+								+ time);
 						break;
 					case "owner" :
 						event.getBot()
 								.sendNotice(user,
 										"The !owner command tells you who the owner of the bot is... durr.");
-						log.writeLog(user + " sent the \"help owner\" command on " + time);
+						log.writeLog(user
+								+ " sent the \"help owner\" command on " + time);
 						break;
 					case "twitter" :
 						event.getBot()
 								.sendNotice(user,
 										"The !twitter command does nothing at the moment.");
-						log.writeLog(user + " sent the \"help twitter\" command on " + time);
+						log.writeLog(user
+								+ " sent the \"help twitter\" command on "
+								+ time);
 						break;
 					case "time" :
 						event.getBot()
 								.sendNotice(user,
 										"The !time command gives you the current bot server time.");
-						log.writeLog(user + " sent the \"help time\" command on " + time);
+						log.writeLog(user
+								+ " sent the \"help time\" command on " + time);
 						break;
 					case "derp" :
-						event.getBot()
-								.sendNotice(user,
-										"Derp.");
-						log.writeLog(user + " sent the \"help derp\" command on " + time);
+						event.getBot().sendNotice(user, "Derp.");
+						log.writeLog(user
+								+ " sent the \"help derp\" command on " + time);
 						break;
 					default :
 						event.getBot().sendNotice(user,
 								"Usage is !help (command)");
-						log.writeLog(user + " Didnt enter a proper argument for help at " + time);
+						log.writeLog(user
+								+ " Didnt enter a proper argument for help at "
+								+ time);
 				}
+			}
+		}
+		else if (messageString.toLowerCase().startsWith("!password"))
+		{
+			String[] msg2 = messageString.split(" ");
+			if (msg2.length == 2)
+			{
+				UrlGetter pass = new UrlGetter();
+				event.getBot().sendNotice(event.getUser(),
+						pass.getPassword(msg2[1]));
+				log.writeLog(user + " sent the \"password\" command on " + time);
 			}
 			else
 			{
-				event.getBot().sendNotice(event.getUser(), "Commands are !help, !derp, !time, !owner, !password and !twitter");
-				event.getBot().sendNotice(event.getUser(), "Get help on a specific command with !help (command)");
-				log.writeLog(user + " sent the \"help\" command with no arguments on " + time);
+				event.getBot().sendNotice(event.getUser(),
+						"Usage is !password (length) range is 6 - 24");
 			}
 		}
+		else
+		{
+			event.getBot()
+					.sendNotice(event.getUser(),
+							"Commands are !help, !derp, !time, !owner, !password and !twitter");
+			event.getBot().sendNotice(event.getUser(),
+					"Get help on a specific command with !help (command)");
+			log.writeLog(user
+					+ " sent the \"help\" command with no arguments on " + time);
+		}
+
 	}
 }
