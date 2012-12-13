@@ -70,7 +70,7 @@ public class ArgumentCommands extends ListenerAdapter
 								+ " sent the \"help time\" command on " + time);
 						break;
 					case "derp" :
-						event.getBot().sendNotice(user, "Derp.");
+						event.getBot().sendNotice(user, "Sorry the derp command doesnt do anything yet.");
 						log.writeLog(user
 								+ " sent the \"help derp\" command on " + time);
 						break;
@@ -98,16 +98,6 @@ public class ArgumentCommands extends ListenerAdapter
 				event.getBot().sendNotice(event.getUser(),
 						"Usage is !password (length) range is 6 - 24");
 			}
-		}
-		else
-		{
-			event.getBot()
-					.sendNotice(event.getUser(),
-							"Commands are !help, !derp, !time, !owner, !password and !twitter");
-			event.getBot().sendNotice(event.getUser(),
-					"Get help on a specific command with !help (command)");
-			log.writeLog(user
-					+ " sent the \"help\" command with no arguments on " + time);
 		}
 
 	}

@@ -24,7 +24,8 @@ public class OnJoinMessage extends ListenerAdapter
 	public void onJoin(JoinEvent event)
 	{
 		event.getBot().sendNotice(event.getUser(), "Hey there " + event.getUser().getNick() + " Type !help to get a list of commands that I can execute!");
-		
+		TimedMethods t = new TimedMethods(event.getBot(), event.getChannel());
+		t.sendMessage();
 		log.writeLog(event.getUser().getNick() + " Joined the channel at " + new Date());
 	}
 }
